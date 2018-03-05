@@ -3,41 +3,33 @@
 const createEnumerableProperty = () => {
 };
 const createNotEnumerableProperty = () => {
-
     return Symbol();
 };
 const createProtoMagicObject = () => {
     let animal = {
-
     };
-
     function magicObj() {
             }
-
     magicObj.prototype = animal;
     magicObj.__proto__ = animal;
     return magicObj;
-
 };
+let counter = 0;
 const incrementor = () => {
-
-
-        var currentSum = 0;
-
-        function f() {
-            currentSum ++;
-            return f;
+       counter++;
+        function iterator() {
+            counter++;
+            return iterator;
         }
-
-        f.toString = function() {
-            return currentSum;
+        iterator.valueOf = function () {
+            return counter;
         };
-
-        return f;
-
-
+        return iterator;
 };
+let counterAsync = 0;
 const asyncIncrementor = () => {
+    counterAsync++;
+    return counterAsync;
 };
 const createIncrementer = () => {
 };
