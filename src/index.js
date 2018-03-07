@@ -32,10 +32,25 @@ const asyncIncrementor = () => {
     return counterAsync;
 };
 const createIncrementer = () => {
+    let nextIndex = 1;
+    return {
+        next: function () {
+            return {value: nextIndex++, done: false}
+        },
+        [Symbol.iterator]() {
+            return {
+                next() {
+                    return {value: nextIndex++, done: false};
+                }
+            };
+        }
+    }
+
 };
 
 // return same argument not earlier than in one second, and not later, than in two
 const returnBackInSecond = () => {
+
 };
 const getDeepPropertiesCount = () => {
 };
