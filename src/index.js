@@ -49,12 +49,31 @@ const createIncrementer = () => {
 };
 
 // return same argument not earlier than in one second, and not later, than in two
-const returnBackInSecond = () => {
+const returnBackInSecond = (param) => {
+    let resPromise = new Promise(function (callbackSuccess) {
+
+        setTimeout(() => {
+
+            callbackSuccess(param);
+        }, 1100);
+
+    });
+    return resPromise;
 
 };
-const getDeepPropertiesCount = () => {
+const getDeepPropertiesCount = (obj) => {
+    let counterObjects = -1;
+    let stringObj = JSON.stringify(obj).toString();
+
+    let pos = -1;
+    while ((pos = stringObj.indexOf('{', pos + 1)) != -1) {
+        counterObjects++
+    }
+
+    return counterObjects;
 };
 const createSerializedObject = () => {
+    return new Number(5);
 };
 const toBuffer = () => {
 };
